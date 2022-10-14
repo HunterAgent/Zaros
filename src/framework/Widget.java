@@ -4,24 +4,7 @@ import simple.hooks.simplebot.Game;
 import simple.hooks.wrappers.SimpleWidget;
 import simple.robot.api.ClientContext;
 
-import java.util.ArrayList;
-
 public class Widget {
-
-//    Might not work, .getChildren is throwing me a NPE
-    // MIGHT NEED TO USE DYNAMIC CHILDREN?
-//    public static ArrayList<SimpleWidget> getAllChildren(SimpleWidget w){
-//        ArrayList<SimpleWidget> children = new ArrayList<>();
-//        if (w != null) {
-//            ClientContext.instance().log(String.valueOf(w.getId()));
-//            children.add(w);
-//            for (SimpleWidget c : w.getChildren()) {
-//                children.addAll(getAllChildren(c));
-//            }
-//        }
-//        return children;
-//    }
-
     public static SimpleWidget getWidget(int id, int sub_id) {
         return ClientContext.instance().widgets.getWidget(id, sub_id);
     }
