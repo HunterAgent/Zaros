@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="simplebot-api">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.simplebot/assets/zaros/simplebot-api.jar!/" />
+      <root url="jar://$USER_HOME$/.simplebot/assets/zaros/simplebot-framework.jar!/" />
+      <root url="jar://$USER_HOME$/.simplebot/assets/zaros/zaros-client.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
