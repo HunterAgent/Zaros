@@ -54,7 +54,7 @@ public class Main extends TaskScript {
         Camera.setupDefaultCameraZoom();
 
         tasks.addAll(Arrays.asList(
-                new RejuvenationBoxHealTask(ctx, 50),
+                new RejuvenationBoxHealTask(ctx, 40),
                 new BankTask(ctx, Bank.DRAYNOR),
                 new EquipRogueTask(ctx),
                 new TeleportTask(ctx, Location.DRAYNOR, Areas.DRYNOR_VILLAGE),
