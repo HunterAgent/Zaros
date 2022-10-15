@@ -11,4 +11,9 @@ public class Teleportation {
             teleporter.open();
         return teleporter.teleportStringPath(loc.getCategory().name(), loc.getName());
     }
+
+    public static boolean home()
+    {
+        return ClientContext.instance().magic.castHomeTeleport();
+    }
 }
