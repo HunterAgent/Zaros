@@ -76,12 +76,11 @@ public enum Obstacle {
             obstacleObj = WorldObject.getNearest(this.getIds());
         }
 
-        if (!WorldObject.isValid(obstacleObj) || !obstacleObj.click(this.getAction())) {
+        if (!WorldObject.isValid(obstacleObj)) {
             ClientContext.instance().pathing.step(area.randomTile().dz(ClientContext.instance().pathing.plane()));
             return false;
         }
 
-        return true;
+        return obstacleObj.click(0) || obstacleObj.click(this.getAction());
     }
-
 }
