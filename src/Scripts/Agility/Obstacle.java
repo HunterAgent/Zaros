@@ -81,9 +81,7 @@ public enum Obstacle {
             return false;
         }
 
-        ClientContext.instance().log("Successfully handled: " + this.getName() + "-" + this.getAction() + ":" + obstacleObj.getId());
         return true;
-
     }
 
 }
