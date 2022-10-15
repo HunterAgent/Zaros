@@ -1,11 +1,11 @@
-package framework;
+package framework.World;
 
 import net.runelite.api.coords.WorldPoint;
 import simple.hooks.wrappers.SimpleObject;
 import simple.robot.api.ClientContext;
 import simple.robot.utils.WorldArea;
 
-public class Object {
+public class WorldObject {
     public static boolean isValid(SimpleObject obj) {
         return obj != null && obj.visibleOnScreen() && obj.validateInteractable();
     }

@@ -1,4 +1,4 @@
-package framework;
+package framework.World;
 
 import simple.hooks.wrappers.SimpleNpc;
 import simple.robot.api.ClientContext;
