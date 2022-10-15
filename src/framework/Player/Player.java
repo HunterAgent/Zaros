@@ -21,4 +21,19 @@ public class Player {
     public static int getHealth() {
         return ClientContext.instance().players.getLocal().getHealth();
     }
+
+    public static boolean isRunning()
+    {
+        return ClientContext.instance().pathing.running();
+    }
+
+    public static int getRunEnergy()
+    {
+        return ClientContext.instance().pathing.energyLevel();
+    }
+
+    public static void toggleRun(boolean state)
+    {
+       ClientContext.instance().pathing.running(state);
+    }
 }
