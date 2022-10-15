@@ -17,24 +17,33 @@ public class Camera {
     }
 
     public static void setZoom(Zoom zoom) {
-        Game.Tab tab = Widget.getGameTab();
+        Game.Tab original_tab = Widget.getGameTab();
         if (!Widget.isTabOpen(Game.Tab.OPTIONS)) {
             Widget.openTab(Game.Tab.OPTIONS);
             ClientContext.instance().sleepCondition(() -> Widget.isTabOpen(Game.Tab.OPTIONS), 1000);
         }
 
-        SimpleWidget widget = Widget.getWidget(116, 92 + zoom.ordinal());
-        if (Widget.isValidWidget(widget)){
-            widget.click(0);
-            ClientContext.instance().log("Adjusting zoom");
-        }
-        else {
-            ClientContext.instance().log("Failed adjusting zoom");
+        SimpleWidget display_widget = Widget.getWidget(116, 112);
+        if (!Widget.isValidWidget(display_widget)) {
+            ClientContext.instance().log("Failed switching to display settings tab");
+            Widget.openTab(original_tab);
+            return;
         }
 
-        if (!Widget.isTabOpen(tab)) {
-            Widget.openTab(tab);
+        display_widget.click("Display");
+
+        SimpleWidget widget = Widget.getWidget(116, 92 + zoom.ordinal());
+        if (!Widget.isValidWidget(widget)) {
+            ClientContext.instance().log("Failed adjusting zoom");
+            Widget.openTab(original_tab);
+            return;
         }
+
+        if (widget.click(0)) {
+            ClientContext.instance().log("Successfully adjusted zoom");
+        }
+
+        Widget.openTab(original_tab);
     }
 
     public static void zoomOut() {
