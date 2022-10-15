@@ -71,7 +71,7 @@ public enum Obstacle {
             obstacleObj = WorldObject.getNearestWithinArea(this.getIds(), area);
         }
 
-        if (!WorldObject.isValid(obstacleObj) || !obstacleObj.click(this.getAction())) {
+        if (!WorldObject.isValid(obstacleObj)) {
             ClientContext.instance().log("Failed to id locate obstacle: " + Arrays.toString(this.getIds()));
             obstacleObj = WorldObject.getNearest(this.getIds());
         }
