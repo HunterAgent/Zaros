@@ -41,10 +41,8 @@ public enum Bank {
 
         if (!this.area.containsPoint(Player.getLocation())) {
             if (bank != null && !WorldObject.isValid(bank)) {
-                Logger.log("Walking to bank");
                 ClientContext.instance().pathing.step(bank.getLocation());
             } else {
-                Logger.log("Teleporting to bank");
                 Teleportation.teleport(this.teleport);
             }
         }
