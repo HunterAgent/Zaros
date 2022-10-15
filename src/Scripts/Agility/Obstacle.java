@@ -21,7 +21,7 @@ public enum Obstacle {
     TIGHTROPE("Tightrope", "Cross", 11405, 11406, 14398, 14409, 14932, 14987, 14992),
     NARROW_WALL("Narrow wall", "Balance", 11430),
     JUMP_UP_WALL("Wall", "Jump-up", 11630),
-    GAP("Gap", "Jump", 11631, 14399, 14928, 14929, 14930, 14844, 14845, 14846, 14847, 14848, 14897),
+    GAP("Gap", "Jump", 11631, 14399, 14928, 14929, 14930, 14844, 14845, 14846, 14847, 14848, 14897, 15609, 15610, 15611, 15612),
     CRATE("Crate", "Climb-down", 11632),
 
     CABLE("Cable", "Swing-across", 14402),
@@ -47,9 +47,9 @@ public enum Obstacle {
     GAP_HURDLE("Gap", "Hurdle", 14991),
     PILE_OF_FISH("Pile of fish", "Jump-in", 14994),
 
-    WOODEN_BEAMS("Wooden beams", "Climb-up"),
-    PLANK("Plank", "Walk-on"),
-    STEEP_ROOF("Steep roof", "Balance-across")
+    WOODEN_BEAMS("Wooden beams", "Climb-up", 15608),
+    PLANK("Plank", "Walk-on", 26635),
+    STEEP_ROOF("Steep roof", "Balance-across", 28912)
     ;
 
     @Getter
