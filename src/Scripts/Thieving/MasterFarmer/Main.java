@@ -5,6 +5,7 @@ import Scripts.Thieving.Tasks.EquipRogueTask;
 import Scripts.Thieving.Tasks.PickpocketTask;
 import framework.Camera;
 import framework.Player.Skill;
+import framework.Tasks.AntiBanTask;
 import framework.Tasks.RejuvenationBoxHealTask;
 import framework.Tasks.RunTask;
 import framework.Tasks.TeleportTask;
@@ -54,6 +55,7 @@ public class Main extends TaskScript {
         Camera.setupDefaultCameraZoom();
 
         tasks.addAll(Arrays.asList(
+                new AntiBanTask(ctx, 5),
                 new RejuvenationBoxHealTask(ctx, 40),
                 new BankTask(ctx, Bank.DRAYNOR),
                 new EquipRogueTask(ctx),
