@@ -25,4 +25,8 @@ public class WorldObject {
     public static SimpleObject getNearestWithinArea(String name, WorldArea area) {
         return ClientContext.instance().objects.populate().filter(name).filter(o -> area.containsPoint(o.getLocation())).nearest().next();
     }
+
+    public static SimpleObject getNearestWithinArea(int[] id, WorldArea area) {
+        return ClientContext.instance().objects.populate().filter(id).filter(o -> area.containsPoint(o.getLocation())).nearest().next();
+    }
 }
