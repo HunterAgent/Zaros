@@ -5,6 +5,7 @@ import framework.Player.Player;
 import framework.World.Areas;
 import lombok.Getter;
 import lombok.Setter;
+import net.runelite.api.coords.WorldPoint;
 import simple.hooks.scripts.task.Task;
 import simple.robot.api.ClientContext;
 
@@ -20,8 +21,12 @@ public class CourseTask extends Task {
 
     @Override
     public void run() {
-        if (!course.inCourse(Player.getLocation()))
-            ClientContext.instance().pathing.step(course.getObstacles().get(0).getValue().randomTile());
+        if (!course.inCourse(Player.getLocation())) {
+            WorldPoint tile = course.getObstacles().get(0).getValue().randomTile();
+            if (tile != null && ClientContext.instance().pathing.reachable(tile))
+                ClientContext.instance().pathing.step(tile);
+        }
+
         course.handleNextObstacle();
     }
 
