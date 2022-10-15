@@ -45,7 +45,11 @@ public class Widget {
     }
 
     public static boolean isValidWidget(SimpleWidget w) {
-        return w != null && w.visibleOnScreen() && w.validateInteractable();
+        return w != null;
+    }
+
+    public static boolean isInteractable(SimpleWidget w) {
+        return w != null && w.validateInteractable();
     }
 
     public static Game.Tab getGameTab() {

@@ -14,9 +14,18 @@ public class WorldObject {
         return ClientContext.instance().objects.populate().filter(name).nearest().next();
     }
 
+    public static SimpleObject getNearest(String ... name) {
+        return ClientContext.instance().objects.populate().filter(name).nearest().next();
+    }
+
     public static SimpleObject getNearest(int id) {
         return ClientContext.instance().objects.populate().filter(id).nearest().next();
     }
+
+    public static SimpleObject getNearest(int ... id) {
+        return ClientContext.instance().objects.populate().filter(id).nearest().next();
+    }
+
 
     public static SimpleObject getNearest(int id, WorldPoint point) {
         return ClientContext.instance().objects.populate().filter(id).nearest(point).next();

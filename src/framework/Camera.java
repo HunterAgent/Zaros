@@ -23,7 +23,7 @@ public class Camera {
             ClientContext.instance().sleepCondition(() -> Widget.isTabOpen(Game.Tab.OPTIONS), 1000);
         }
 
-        SimpleWidget widget = Widget.getWidget(116, 51 + zoom.ordinal());
+        SimpleWidget widget = Widget.getWidget(116, 92 + zoom.ordinal());
         if (Widget.isValidWidget(widget)){
             widget.click(0);
             ClientContext.instance().log("Adjusting zoom");
@@ -42,13 +42,16 @@ public class Camera {
     }
 
     public static void setNorth() {
-        SimpleWidget north = Widget.getWidget(548, 7);
+        SimpleWidget north = Widget.getWidget(548, 20);
         if (Widget.isValidWidget(north)) {
-            north.click(0);
+            if (!north.click("Look North"))
+            {
+                ClientContext.instance().log("Failed setting camera to north");
+            }
         }
     }
 
-    public static void setupCameraZoom() {
+    public static void setupDefaultCameraZoom() {
         ClientContext ctx = ClientContext.instance();
         setNorth();
         zoomOut();

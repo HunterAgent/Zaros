@@ -19,4 +19,10 @@ public class Skill {
     public static int getPercentage(Skills skill) {
         return (int) (((float) getLvl(skill) / getRealLvl(skill)) * 100);
     }
+
+    public static int getGainedXP(Skills skills, int starting_xp)
+    {
+        return getXP(skills) - starting_xp;
+    }
+
 }
