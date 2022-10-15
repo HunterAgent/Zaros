@@ -53,7 +53,7 @@ public class Main extends TaskScript implements InventoryChangeListener {
 
     @Override
     public void onChatMessage(ChatMessage chatMessage) {
-        if (isProgressive && chatMessage.getMessage().contains("just advanced an agility level.")) {
+        if (isProgressive && chatMessage.getMessage().contains("agility level")) {
             updateCourse(Course.getMaxCourse(Skill.getLvl(AGILITY)));
         }
 
@@ -68,7 +68,6 @@ public class Main extends TaskScript implements InventoryChangeListener {
         updateCourse(Course.getMaxCourse(Skill.getLvl(AGILITY)));
 
         tasks.addAll(Arrays.asList(lootTask, new RunTask(ctx, 30), courseTask, travelTask));
-
     }
 
     @Override
@@ -90,22 +89,20 @@ public class Main extends TaskScript implements InventoryChangeListener {
     }
 
     @Override
-    public void paint(Graphics graphics) {
-        Graphics2D g = (Graphics2D) graphics;
-
-        g.drawString("Status: " + getScriptStatus(), 550, 400);
-
+    public void paint(Graphics g) {
         int gainedXp = Skill.getGainedXP(AGILITY, startXp);
-        g.drawString("Total XP: " +
-                        Utils.formatNumber(gainedXp) + " / " +
-                        Utils.formatNumber(this.ctx.paint.valuePerHour(gainedXp, startTime)),
+        g.setColor(new Color(30, 50, 70, 200));
+        g.fillRoundRect(545, 380, 192, 85, 15, 15);
+        g.setColor(Color.WHITE);
+        g.drawString("Status: "  + getScriptStatus(), 550, 400);
+        g.drawString("XP: " +
+                        Utils.formatNumber(gainedXp) + " (" +
+                        Utils.formatNumber(this.ctx.paint.valuePerHour(gainedXp, startTime)) + ")",
                 550, 420);
-
-        g.drawString("Total Marks: " +
-                        Utils.formatNumber(totalMarks) + " / " +
-                        Utils.formatNumber(this.ctx.paint.valuePerHour(totalMarks, startTime)),
+        g.drawString("MOG: " +
+                        Utils.formatNumber(totalMarks) + " (" +
+                        Utils.formatNumber(this.ctx.paint.valuePerHour(totalMarks, startTime)) + ")",
                 550, 440);
-
         g.drawString("Uptime: " + formatTime(startTime, System.currentTimeMillis()), 550, 460);
     }
 
