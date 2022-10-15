@@ -23,6 +23,8 @@ public class PickpocketTask extends Task {
             // TODO: If we increase this to other NPCs, need to also disable attacking
             if (!target.click(0))
                 target.click("Pickpocket");
+        } else {
+            ClientContext.instance().pathing.step(target.getLocation());
         }
     }
 
