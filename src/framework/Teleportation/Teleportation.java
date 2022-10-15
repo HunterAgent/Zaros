@@ -1,5 +1,7 @@
 package framework.Teleportation;
 
+import framework.Player.Player;
+import framework.World.Areas;
 import simple.hooks.simplebot.teleporter.Teleporter;
 import simple.robot.api.ClientContext;
 
@@ -14,6 +16,7 @@ public class Teleportation {
 
     public static boolean home()
     {
-        return ClientContext.instance().magic.castHomeTeleport();
+        ClientContext.instance().magic.castHomeTeleport();
+        return ClientContext.instance().sleepCondition(() -> Areas.EDGEVILLE_AREA.containsPoint(Player.getLocation()), 1000);
     }
 }
