@@ -29,8 +29,7 @@ public enum Bank {
         this.area = area;
     }
 
-    public boolean open()
-    {
+    public boolean open() {
         if (isOpen())
             return true;
 
@@ -53,14 +52,16 @@ public enum Bank {
         return false;
     }
 
-    public static boolean isOpen()
-    {
+    public static boolean isOpen() {
         return ClientContext.instance().bank.bankOpen();
     }
 
-    public static boolean depositAll()
-    {
+    public static boolean depositAll() {
         ClientContext.instance().bank.depositInventory();
         return Inventory.isEmpty();
+    }
+
+    public static boolean close() {
+        return ClientContext.instance().bank.closeBank();
     }
 }

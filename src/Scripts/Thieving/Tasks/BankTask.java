@@ -18,6 +18,7 @@ public class BankTask extends Task {
     public void run() {
         this.bank.open();
         Bank.depositAll();
+        Bank.close();
     }
 
     @Override
@@ -27,6 +28,6 @@ public class BankTask extends Task {
 
     @Override
     public boolean condition() {
-        return Inventory.isFull();
+        return Inventory.isFull() || Bank.isOpen();
     }
 }
