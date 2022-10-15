@@ -19,7 +19,7 @@ public enum Course {
             Location.AGILITY_GNOME_COUSE,
             new ArrayList<>(Arrays.asList(
             new Pair<>(Obstacle.LOG_BALANCE, Areas.makeArea(2471, 3437, 2477, 3432, 0)),
-            new Pair<>(Obstacle.OBSTACLE_NET, Areas.makeArea(2470, 3433, 2477, 3424, 0)),
+            new Pair<>(Obstacle.OBSTACLE_NET, Areas.makeArea(2471, 3431, 2477, 3424, 0)),
             new Pair<>(Obstacle.TREE_BRANCH_UP, Areas.makeArea(2470, 3425, 2477, 3421, 1)),
             new Pair<>(Obstacle.BALANCING_ROPE, Areas.makeArea(2471, 3422, 2482, 3417, 2)),
             new Pair<>(Obstacle.TREE_BRANCH_DOWN, Areas.makeArea(2481, 3422, 2489, 3417, 2)),
