@@ -42,4 +42,12 @@ public class Inventory {
     public static SimpleItem getItem(String... itemName) {
         return getItems(itemName).next();
     }
+
+    public static boolean isFull() {
+        return ClientContext.instance().inventory.inventoryFull();
+    }
+
+    public static boolean isEmpty() {
+        return ClientContext.instance().inventory.isEmpty();
+    }
 }
