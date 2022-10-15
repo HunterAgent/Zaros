@@ -30,17 +30,20 @@ public class Camera {
             return;
         }
 
-        display_widget.click("Display");
+        ClientContext.instance().sleepCondition(() -> display_widget.click(0), 1000);
+        ClientContext.instance().sleep(500);
 
         SimpleWidget widget = Widget.getWidget(116, 92 + zoom.ordinal());
         if (!Widget.isValidWidget(widget)) {
-            ClientContext.instance().log("Failed adjusting zoom");
+            ClientContext.instance().log("Failed getting Zoom Widget");
             Widget.openTab(original_tab);
             return;
         }
 
-        if (widget.click(0)) {
+        if (widget.click(0) || widget.click(0) || widget.click(0)) {
             ClientContext.instance().log("Successfully adjusted zoom");
+        } else {
+            ClientContext.instance().log("Failed adjusting zoom");
         }
 
         Widget.openTab(original_tab);
