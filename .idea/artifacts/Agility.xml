@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Agility">
+    <output-path>$USER_HOME$/.simplebot/privatescripts</output-path>
+    <root id="archive" name="Agility.jar">
+      <element id="module-output" name="Zaros" />
+    </root>
+  </artifact>
+</component>
