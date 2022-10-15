@@ -73,6 +73,10 @@ public enum Obstacle {
 
         if (!WorldObject.isValid(obstacleObj) || !obstacleObj.click(this.getAction())) {
             ClientContext.instance().log("Failed to id locate obstacle: " + Arrays.toString(this.getIds()));
+            obstacleObj = WorldObject.getNearest(this.getIds());
+        }
+
+        if (!WorldObject.isValid(obstacleObj) || !obstacleObj.click(this.getAction())) {
             ClientContext.instance().pathing.step(area.randomTile().dz(ClientContext.instance().pathing.plane()));
             return false;
         }
