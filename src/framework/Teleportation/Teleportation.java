@@ -17,6 +17,8 @@ public class Teleportation {
     public static boolean home()
     {
         ClientContext.instance().magic.castHomeTeleport();
-        return ClientContext.instance().sleepCondition(() -> Areas.EDGEVILLE_AREA.containsPoint(Player.getLocation()), 1000);
+        return ClientContext.instance().sleepCondition(
+                () -> Areas.EDGEVILLE_AREA.containsPoint(Player.getLocation()) && !Player.isAnimating(),
+                1000);
     }
 }
