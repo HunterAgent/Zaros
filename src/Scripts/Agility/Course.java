@@ -176,5 +176,4 @@ public enum Course {
     static public Course getMaxCourse(int currentLvl) {
         return Arrays.stream(Course.values()).filter(c -> c.reqLvl <= currentLvl).max(Comparator.comparing(Course::getReqLvl)).orElse(GNOME);
     }
-
 }
