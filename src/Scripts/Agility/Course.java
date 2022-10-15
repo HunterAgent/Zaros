@@ -109,7 +109,7 @@ public enum Course {
                     new Pair<>(Obstacle.EDGE_JUMP, Areas.makeArea(2696, 3468, 2705, 3457, 2))
             ))),
     RELLEKKA(80,
-            Areas.makeArea(2664, 3679, 2612, 3647, 0),
+            Areas.makeArea(2664, 3681, 2612, 3647, 0),
             Location.AGILITY_RELLEKKA_ROOFTOP,
             new ArrayList<>(Arrays.asList(
                     new Pair<>(Obstacle.ROUGH_WALL, Areas.makeArea(2623, 3676, 2629, 3678, 0)),
