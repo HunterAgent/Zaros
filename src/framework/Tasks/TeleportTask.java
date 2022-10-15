@@ -4,14 +4,17 @@ import framework.Player.Player;
 import framework.Teleportation.Location;
 import framework.Teleportation.Teleportation;
 import framework.World.Areas;
+import lombok.Setter;
 import simple.hooks.scripts.task.Task;
 import simple.robot.api.ClientContext;
 import simple.robot.utils.WorldArea;
 
 public class TeleportTask extends Task {
 
-    private final Location loc;
-    private final WorldArea target;
+    @Setter
+    private Location loc;
+    @Setter
+    private WorldArea target;
 
     public TeleportTask(ClientContext ctx, Location loc, WorldArea target) {
         super(ctx);
