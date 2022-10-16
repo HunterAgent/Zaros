@@ -34,7 +34,7 @@ public class GroundItem {
     }
 
     public static boolean isValid(SimpleGroundItem gItem) {
-        return gItem != null && gItem.visibleOnScreen() && gItem.validateInteractable() && ClientContext.instance().pathing.reachable(gItem);
+        return gItem != null && ClientContext.instance().pathing.reachable(gItem) && gItem.visibleOnScreen() && gItem.validateInteractable();
     }
 
     public static SimpleGroundItem getNearest() {
