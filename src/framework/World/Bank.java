@@ -36,7 +36,7 @@ public enum Bank {
         SimpleObject bank = WorldObject.getNearestWithinArea(this.type.getName(), this.area);
         if (WorldObject.isValid(bank))
         {
-            return bank.click(0) || bank.click(this.type.getAction());
+            return bank.click(0) || bank.click(this.type.getAction()) || Travel.travel(bank);
         }
 
         if (!this.area.containsPoint(Player.getLocation())) {
