@@ -22,7 +22,8 @@ public class RejuvenationBoxHealTask extends Task {
             Teleportation.home();
         }
 
-        SimpleObject box = WorldObject.getNearest("Rejuvenation box");
+//        SimpleObject box = WorldObject.getNearest("Rejuvenation box");
+        SimpleObject box = WorldObject.getNearest(60003);
         if (WorldObject.isValid(box))
         {
             if (!box.click(0))
