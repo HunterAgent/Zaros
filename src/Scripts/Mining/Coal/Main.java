@@ -78,10 +78,7 @@ public class Main extends TaskScript implements InventoryChangeListener {
                 new AntiBanTask(ctx, 5),
                 new BankTask(ctx, Bank.MINING_GUILD),
                 new MineTask(ctx, Rock.COAL, Areas.makeArea(3029, 9713, 3014, 9727)),
-//                new TeleportTask(ctx, Location.LLETYA, Areas.LLETYA),
                 new RunTask(ctx, 30)
-//                new PickpocketTask(ctx, "Goreu", Areas.LLETYA_GOREU, false),
-//                new ShortTravelTask(ctx, Areas.LLETYA, Areas.LLETYA_GOREU)
         ));
 
         validate();
