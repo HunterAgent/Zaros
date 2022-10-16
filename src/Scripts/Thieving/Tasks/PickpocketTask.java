@@ -6,15 +6,18 @@ import framework.World.Npc;
 import simple.hooks.scripts.task.Task;
 import simple.hooks.wrappers.SimpleNpc;
 import simple.robot.api.ClientContext;
+import simple.robot.utils.WorldArea;
 
 public class PickpocketTask extends Task {
 
     private final String name;
+    private final WorldArea area;
     private SimpleNpc target;
 
-    public PickpocketTask(ClientContext ctx, String name) {
+    public PickpocketTask(ClientContext ctx, String name, WorldArea area) {
         super(ctx);
         this.name = name;
+        this.area = area;
     }
 
     @Override
@@ -35,7 +38,7 @@ public class PickpocketTask extends Task {
 
     @Override
     public boolean condition() {
-        target = Npc.getNearest(this.name);
+        target = Npc.getNearestWithinArea(this.name, this.area);
         return target != null && !Inventory.isFull();
     }
 }

@@ -1,7 +1,9 @@
 package framework.World;
 
 import simple.hooks.wrappers.SimpleNpc;
+import simple.hooks.wrappers.SimpleObject;
 import simple.robot.api.ClientContext;
+import simple.robot.utils.WorldArea;
 
 import java.util.function.Predicate;
 
@@ -28,5 +30,9 @@ public class Npc {
 
     public static boolean isValid(SimpleNpc npc) {
         return npc != null && npc.visibleOnScreen();
+    }
+
+    public static SimpleNpc getNearestWithinArea(String name, WorldArea area) {
+        return ClientContext.instance().npcs.populate().filter(name).filter(npc -> area.containsPoint(npc.getLocation())).nearest().next();
     }
 }
