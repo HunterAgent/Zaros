@@ -37,8 +37,6 @@ public class CourseTask extends Task {
 
     @Override
     public boolean condition() {
-        return Areas.containsIgnoreZ(this.course.getArea(), Player.getLocation()) &&
-                !ClientContext.instance().players.getLocal().isAnimating() &&
-                !ClientContext.instance().pathing.inMotion();
+        return Areas.containsIgnoreZ(this.course.getArea(), Player.getLocation()) && !Player.isAnimating();
     }
 }
