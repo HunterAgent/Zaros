@@ -42,8 +42,8 @@ public class Equipment {
         return filter(itemName).population() > 0;
     }
 
-    public static boolean contains(int ... itempId) {
-        return filter(itempId).population() > 0;
+    public static boolean contains(int ... itemId) {
+        return filter(itemId).population() > 0;
     }
 
     public static boolean contains(List<String> names) {

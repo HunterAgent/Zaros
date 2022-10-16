@@ -46,4 +46,8 @@ public class Player {
         return ClientContext.instance().players.getLocal().isAnimating() || ClientContext.instance().pathing.inMotion();
     }
 
+    public static boolean hasPickaxe() {
+        return Inventory.contains("pickaxe") || Equipment.contains("pickaxe");
+    }
+
 }

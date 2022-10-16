@@ -1,6 +1,6 @@
 package Scripts.Thieving.Elfs;
 
-import Scripts.Thieving.Tasks.BankTask;
+import framework.World.BankTask;
 import Scripts.Thieving.Tasks.CoinPouchTask;
 import Scripts.Thieving.Tasks.EquipRogueTask;
 import Scripts.Thieving.Tasks.PickpocketTask;

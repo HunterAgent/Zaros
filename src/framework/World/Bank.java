@@ -13,7 +13,8 @@ import static framework.World.BankType.*;
 
 public enum Bank {
     DRAYNOR(BOOTH, Location.DRAYNOR, Areas.makeArea(3097, 3239, 3079, 3252)),
-    LLETYA(DEPOSIT, Location.LLETYA, Areas.LLETYA_BANK);
+    LLETYA(DEPOSIT, Location.LLETYA, Areas.LLETYA_BANK),
+    MINING_GUILD(DEPOSIT, null, Areas.MINING_GUILD_BANK);
 
     @Getter
     private final BankType type;
