@@ -35,7 +35,7 @@ import static simple.robot.utils.ScriptUtils.formatTime;
         discord = "HunterAgent#8066",
         name = "Lucky Master Farmer",
         servers = {"Zaros"},
-        version = "0.1")
+        version = "1.0")
 public class Main extends TaskScript {
 
     private long startTime;
