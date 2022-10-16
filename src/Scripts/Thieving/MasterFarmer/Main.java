@@ -10,6 +10,7 @@ import framework.Tasks.RejuvenationBoxHealTask;
 import framework.Tasks.RunTask;
 import framework.Tasks.TeleportTask;
 import framework.Teleportation.Location;
+import framework.Utils.Logger;
 import framework.Utils.Utils;
 import framework.World.Areas;
 import framework.World.Bank;
@@ -42,12 +43,23 @@ public class Main extends TaskScript {
     private int startXp, startLvl;
     private final List<Task> tasks = new ArrayList<>();
 
+    public void validateSkillLevel()
+    {
+        if (Skill.getRealLvl(THIEVING) < 38)
+        {
+            Logger.log("Stopping script, needed thieving level was not met");
+            ctx.stopScript();
+        }
+    }
+
     @Override
     public void onChatMessage(ChatMessage chatMessage) {
     }
 
     @Override
     public void onExecute() {
+        validateSkillLevel();
+
         startTime = System.currentTimeMillis();
         startXp = Skill.getXP(THIEVING);
         startLvl = Skill.getLvl(THIEVING);
