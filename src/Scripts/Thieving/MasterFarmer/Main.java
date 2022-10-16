@@ -70,7 +70,7 @@ public class Main extends TaskScript {
                 new EquipRogueTask(ctx),
                 new TeleportTask(ctx, Location.DRAYNOR, Areas.DRAYNOR_VILLAGE),
                 new RunTask(ctx, 30),
-                new PickpocketTask(ctx, "Master Farmer"),
+                new PickpocketTask(ctx, "Master Farmer", Areas.DRAYNOR_MARKET),
                 new ShortTravelTask(ctx, Areas.DRAYNOR_VILLAGE, Areas.DRAYNOR_MARKET)
         ));
     }
