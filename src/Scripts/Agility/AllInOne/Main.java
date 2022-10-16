@@ -1,6 +1,5 @@
 package Scripts.Agility.AllInOne;
 
-
 import Scripts.Agility.Course;
 import Scripts.Agility.Tasks.CourseTask;
 import Scripts.Agility.Tasks.CourseTravelTask;
@@ -21,6 +20,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static simple.hooks.filters.SimpleSkills.Skills.AGILITY;
 import static simple.robot.utils.ScriptUtils.formatTime;
@@ -54,7 +55,10 @@ public class Main extends TaskScript implements InventoryChangeListener {
     @Override
     public void onChatMessage(ChatMessage chatMessage) {
         if (isProgressive && chatMessage.getMessage().contains("agility level")) {
-            updateCourse(Course.getMaxCourse(Skill.getLvl(AGILITY)));
+            // Needed because the Skill level updates only after
+            String message = chatMessage.getMessage().replace(".", "");
+            int lvl = Integer.parseInt(message.substring(message.lastIndexOf(" ") + 1));
+            updateCourse(Course.getMaxCourse(lvl));
         }
 
     }
