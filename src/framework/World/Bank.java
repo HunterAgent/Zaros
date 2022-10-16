@@ -40,7 +40,7 @@ public enum Bank {
         }
 
         if (!this.area.containsPoint(Player.getLocation())) {
-            if (bank != null && !WorldObject.isValid(bank)) {
+            if (bank != null) {
                 Travel.travel(bank);
             } else {
                 Teleportation.teleport(this.teleport);
