@@ -33,7 +33,7 @@ import static simple.robot.utils.ScriptUtils.formatTime;
         discord = "HunterAgent#8066",
         name = "Lucky Agility",
         servers = {"Zaros"},
-        version = "0.1")
+        version = "2.1")
 public class Main extends TaskScript implements InventoryChangeListener {
 
     private long startTime;
