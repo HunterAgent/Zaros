@@ -1,4 +1,4 @@
-package Scripts.Thieving.Tasks;
+package framework.World;
 
 import framework.Player.Inventory;
 import framework.World.Bank;
