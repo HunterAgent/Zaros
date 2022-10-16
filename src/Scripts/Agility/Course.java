@@ -97,7 +97,14 @@ public enum Course {
 //                new Pair<>(Obstacle.LEDGE, Areas.makeArea(3012, 3334, 3020, 3330, 3))
 //            ))),
     SEERS(60,
-            Areas.makeArea(2732, 3500, 2695, 3456, 0),
+//            Areas.makeArea(2732, 3500, 2695, 3456, 0),
+            new WorldArea(
+                    new WorldPoint( 2731, 3500, 0),
+                    new WorldPoint( 2690, 3500, 0),
+                    new WorldPoint( 2690, 3453, 0),
+                    new WorldPoint( 2703, 3453, 0),
+                    new WorldPoint( 2703, 3468, 0),
+                    new WorldPoint( 2731, 3468, 0)),
             Location.AGILITY_SEERS_ROOFTOP,
             new ArrayList<>(Arrays.asList(
                     new Pair<>(Obstacle.CLIMB_WALL, Areas.makeArea(2731, 3490, 2726, 3484, 0)),
