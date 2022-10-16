@@ -1,5 +1,6 @@
 package framework;
 
+import simple.hooks.interfaces.SimpleLocatable;
 import simple.hooks.simplebot.Game;
 import simple.hooks.wrappers.SimpleWidget;
 import simple.robot.api.ClientContext;
@@ -70,6 +71,11 @@ public class Camera {
         ctx.viewport.pitch(true);
         ctx.viewport.pitch(true);
         ctx.viewport.pitch(true);
+    }
+
+    public static void turnTo(SimpleLocatable obj)
+    {
+        ClientContext.instance().viewport.turnTo(obj);
     }
 
 }
