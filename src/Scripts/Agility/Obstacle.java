@@ -1,5 +1,7 @@
 package Scripts.Agility;
 
+import framework.Camera;
+import framework.Player.Player;
 import framework.World.WorldObject;
 import lombok.Getter;
 import simple.hooks.wrappers.SimpleObject;
@@ -81,6 +83,12 @@ public enum Obstacle {
             return false;
         }
 
-        return obstacleObj.click(0) || obstacleObj.click(this.getAction());
+        if (!obstacleObj.click(0) || !ClientContext.instance().sleepCondition(Player::isAnimating, 1500))
+        {
+            Camera.turnTo(obstacleObj);
+            obstacleObj.click(this.getAction());
+        }
+
+        return Player.isAnimating();
     }
 }
