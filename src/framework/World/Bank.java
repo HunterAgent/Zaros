@@ -4,16 +4,16 @@ import framework.Player.Inventory;
 import framework.Player.Player;
 import framework.Teleportation.Location;
 import framework.Teleportation.Teleportation;
-import framework.Utils.Logger;
 import lombok.Getter;
 import simple.hooks.wrappers.SimpleObject;
 import simple.robot.api.ClientContext;
 import simple.robot.utils.WorldArea;
 
-import static framework.World.BankType.BOOTH;
+import static framework.World.BankType.*;
 
 public enum Bank {
-    DRAYNOR(BOOTH, Location.DRAYNOR, Areas.makeArea(3097, 3239, 3079, 3252));
+    DRAYNOR(BOOTH, Location.DRAYNOR, Areas.makeArea(3097, 3239, 3079, 3252)),
+    LLETYA(DEPOSIT, Location.LLETYA, Areas.LLETYA_BANK);
 
     @Getter
     private final BankType type;
@@ -41,7 +41,7 @@ public enum Bank {
 
         if (!this.area.containsPoint(Player.getLocation())) {
             if (bank != null && !WorldObject.isValid(bank)) {
-                ClientContext.instance().pathing.step(bank.getLocation());
+                Travel.travel(bank);
             } else {
                 Teleportation.teleport(this.teleport);
             }
