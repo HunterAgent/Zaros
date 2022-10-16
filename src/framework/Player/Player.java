@@ -43,7 +43,7 @@ public class Player {
     }
 
     public static boolean isAnimating() {
-        return ClientContext.instance().players.getLocal().isAnimating();
+        return ClientContext.instance().players.getLocal().isAnimating() || ClientContext.instance().pathing.inMotion();
     }
 
 }
