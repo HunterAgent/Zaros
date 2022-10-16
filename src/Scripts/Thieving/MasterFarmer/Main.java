@@ -5,10 +5,7 @@ import Scripts.Thieving.Tasks.EquipRogueTask;
 import Scripts.Thieving.Tasks.PickpocketTask;
 import framework.Camera;
 import framework.Player.Skill;
-import framework.Tasks.AntiBanTask;
-import framework.Tasks.RejuvenationBoxHealTask;
-import framework.Tasks.RunTask;
-import framework.Tasks.TeleportTask;
+import framework.Tasks.*;
 import framework.Teleportation.Location;
 import framework.Utils.Logger;
 import framework.Utils.Utils;
@@ -68,10 +65,11 @@ public class Main extends TaskScript {
 
         tasks.addAll(Arrays.asList(
                 new AntiBanTask(ctx, 5),
-                new RejuvenationBoxHealTask(ctx, 40),
+                new RejuvenationBoxExactHealTask(ctx, 4),
                 new BankTask(ctx, Bank.DRAYNOR),
                 new EquipRogueTask(ctx),
-                new TeleportTask(ctx, Location.DRAYNOR, Areas.DRYNOR_VILLAGE),
+                new ShortTravelTask(ctx, Areas.DRAYNOR_VILLAGE, Areas.DRAYNOR_MARKET),
+                new TeleportTask(ctx, Location.DRAYNOR, Areas.DRAYNOR_VILLAGE),
                 new RunTask(ctx, 30),
                 new PickpocketTask(ctx, "Master Farmer")
         ));
