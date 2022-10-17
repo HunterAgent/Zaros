@@ -23,6 +23,7 @@ public class Areas {
     public static final WorldArea WINTERTODT = makeArea(1600, 4035, 1663, 3930);
     public static final WorldArea WINTERTODT_GAME = makeArea(1604, 4029, 1654, 3966);
     public static final WorldArea WINTERTODT_LOBBY = makeArea(1616, 3952, 1646, 3931);
+    public static final WorldArea WINTERTODT_CORNER= makeArea(1635, 3987, 1650, 4001);
 
     public static WorldArea makeArea(int x, int y, int x2, int y2) {
         return new WorldArea(new WorldPoint(x, y, 0), new WorldPoint(x2, y2, 0));

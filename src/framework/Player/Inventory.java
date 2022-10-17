@@ -57,4 +57,10 @@ public class Inventory {
     public static boolean isEmpty() {
         return ClientContext.instance().inventory.isEmpty();
     }
+
+    public static boolean useItemOnItem(String name1, String name2) {
+        SimpleItem item1 = getItem(name1);
+        SimpleItem item2 = getItem(name2);
+        return item1 != null && item2 != null && ClientContext.instance().inventory.itemOnItem(item1, item2);
+    }
 }

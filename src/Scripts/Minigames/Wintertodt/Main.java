@@ -1,11 +1,10 @@
 package Scripts.Minigames.Wintertodt;
 
-import Scripts.Minigames.Wintertodt.Tasks.BankTask;
-import Scripts.Minigames.Wintertodt.Tasks.EnterWintertodtTask;
-import Scripts.Minigames.Wintertodt.Tasks.RestockTask;
+import Scripts.Minigames.Wintertodt.Tasks.*;
 import framework.Camera;
 import framework.Player.Skill;
 import framework.Tasks.AntiBanTask;
+import framework.Tasks.FailSafeCloseBankTask;
 import framework.Tasks.RunTask;
 import framework.Tasks.TeleportTask;
 import framework.Teleportation.Location;
@@ -40,7 +39,7 @@ import static simple.robot.utils.ScriptUtils.formatTime;
 public class Main extends TaskScript implements InventoryChangeListener {
 
     private long startTime;
-    private int startXp, startLvl, coalMined;
+    private int startXp, startLvl, crates;
     private final List<Task> tasks = new ArrayList<>();
 
     public void validateSkillLevel() {
@@ -71,10 +70,15 @@ public class Main extends TaskScript implements InventoryChangeListener {
 //                new TestingTask(ctx),
                 new TeleportTask(ctx, Location.WINTERTODT, Areas.WINTERTODT),
                 new BankTask(ctx),
+                new FailSafeCloseBankTask(ctx),
                 new EnterWintertodtTask(ctx),
                 new AntiBanTask(ctx, 5),
                 new RunTask(ctx, 30),
-                new RestockTask(ctx)
+                new HealTask(ctx),
+                new RestockTask(ctx),
+                new FletchTask(ctx),
+                new BrazierTask(ctx),
+                new ChopTask(ctx)
         ));
 
         validate();
@@ -113,15 +117,15 @@ public class Main extends TaskScript implements InventoryChangeListener {
                         Utils.formatNumber(this.ctx.paint.valuePerHour(gainedXp, startTime)) + ")",
                 550, 420);
         g.drawString("Crates: " +
-                        Utils.formatNumber(coalMined) + " (" +
-                        Utils.formatNumber(this.ctx.paint.valuePerHour(coalMined, startTime)) + ")",
+                        Utils.formatNumber(crates) + " (" +
+                        Utils.formatNumber(this.ctx.paint.valuePerHour(crates, startTime)) + ")",
                 550, 440);
         g.drawString("Uptime: " + formatTime(startTime, System.currentTimeMillis()), 550, 460);
     }
 
     @Override
     public void onChange(InventoryChangeEvent inventoryChangeEvent) {
-        if (inventoryChangeEvent.getItemName().equals("Crate"))
-            coalMined++;
+        if (inventoryChangeEvent.getItemName().equals("Supply crate"))
+            crates++;
     }
 }

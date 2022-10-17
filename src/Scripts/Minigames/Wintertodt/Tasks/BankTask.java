@@ -15,7 +15,7 @@ public class BankTask extends Task {
     @Override
     public void run() {
         Bank.WINTERTOD.open();
-        Bank.depositAllExcept("axe");
+        Bank.depositAllExcept("axe", "Tinderbox", "Knife", "Hammer");
         if (Bank.withdraw("Saradomin brew(4)", 4))
             Bank.close();
     }

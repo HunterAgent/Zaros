@@ -5,6 +5,8 @@ import simple.hooks.wrappers.SimpleObject;
 import simple.robot.api.ClientContext;
 import simple.robot.utils.WorldArea;
 
+import java.util.List;
+
 public class WorldObject {
     public static boolean isValid(SimpleObject obj) {
         return obj != null && obj.visibleOnScreen() && obj.validateInteractable();
@@ -26,7 +28,6 @@ public class WorldObject {
         return ClientContext.instance().objects.populate().filter(id).nearest().next();
     }
 
-
     public static SimpleObject getNearest(int id, WorldPoint point) {
         return ClientContext.instance().objects.populate().filter(id).nearest(point).next();
     }
@@ -37,5 +38,9 @@ public class WorldObject {
 
     public static SimpleObject getNearestWithinArea(int[] id, WorldArea area) {
         return ClientContext.instance().objects.populate().filter(id).filter(o -> area.containsPoint(o.getLocation())).nearest().next();
+    }
+
+    public static SimpleObject getNearestWithinArea(List<Integer> id, WorldArea area) {
+        return ClientContext.instance().objects.populate().filter(obj -> id.contains(obj.getId())).filter(o -> area.containsPoint(o.getLocation())).nearest().next();
     }
 }
