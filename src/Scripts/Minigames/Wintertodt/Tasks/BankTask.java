@@ -27,7 +27,7 @@ public class BankTask extends Task {
 
     @Override
     public boolean condition() {
-        return !Inventory.contains("Saradomin brew") &&
+        return !Inventory.hasBrews() &&
                 (!Areas.WINTERTODT_GAME.containsPoint(Player.getLocation()) || Player.getHealthPercent() < 65);
     }
 }

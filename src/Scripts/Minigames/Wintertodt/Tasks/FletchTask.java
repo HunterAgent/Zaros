@@ -12,7 +12,7 @@ public class FletchTask extends Task {
 
     @Override
     public void run() {
-        Inventory.useItemOnItem("Knife", "Bruma root");
+        Inventory.leftClickUseItemOnItem("Knife", "Bruma root");
         ClientContext.instance().sleepCondition(Player::isAnimating, 500);
     }
 

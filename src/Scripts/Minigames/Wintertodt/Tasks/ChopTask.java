@@ -23,6 +23,7 @@ public class ChopTask extends Task {
             roots.click(0);
             if (!ClientContext.instance().sleepCondition(Player::isAnimating, 1000)) {
                 roots.click("Chop");
+                ClientContext.instance().sleepCondition(Player::isAnimating, 500);
             }
         } else {
             Travel.travel(roots);
@@ -37,6 +38,10 @@ public class ChopTask extends Task {
     @Override
     public boolean condition() {
         roots = WorldObject.getNearestWithinArea("Bruma roots", Areas.WINTERTODT_CORNER);
-        return roots != null && Player.hasAxe() && !Inventory.isFull() && !Player.isAnimating();
+        return roots != null &&
+                Player.hasAxe() &&
+                !Inventory.isFull() &&
+                !Player.isAnimating() &&
+                !Inventory.contains("Bruma kindling");
     }
 }

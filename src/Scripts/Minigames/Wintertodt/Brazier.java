@@ -69,9 +69,11 @@ public class Brazier {
             return;
 
         if (WorldObject.isValid(brazier)) {
-            brazier.click(0);
-            if (!ClientContext.instance().sleepCondition(Player::isAnimating, 1000)) {
-                brazier.click(s.getAction());
+            if (!ClientContext.instance().sleepCondition(Player::isAnimating, 500)) {
+                brazier.click(0);
+                if (!ClientContext.instance().sleepCondition(Player::isAnimating, 1000)) {
+                    brazier.click(s.getAction());
+                }
             }
         } else {
             Travel.travel(brazier);
