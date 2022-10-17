@@ -4,6 +4,7 @@ import framework.Player.Inventory;
 import framework.Player.Player;
 import framework.Teleportation.Location;
 import framework.Teleportation.Teleportation;
+import framework.Utils.Logger;
 import lombok.Getter;
 import simple.hooks.wrappers.SimpleObject;
 import simple.robot.api.ClientContext;
@@ -41,7 +42,11 @@ public enum Bank {
 
         if (!this.area.containsPoint(Player.getLocation())) {
             if (bank != null) {
+                Logger.log("Walking to bank");
                 Travel.travel(bank);
+            } else if (Travel.reachable(area)) {
+                Logger.log("Walking to bank area");
+                Travel.travel(area);
             } else {
                 Teleportation.teleport(this.teleport);
             }
