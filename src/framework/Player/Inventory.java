@@ -31,6 +31,13 @@ public class Inventory {
         return filter(itemName).population() > 0;
     }
 
+    public static int count(String ... itemName) {
+        return filter(itemName).population();
+    }
+    public static boolean onlyContains(String... itemName) {
+        return ClientContext.instance().inventory.populate().population() - count(itemName) == 0;
+    }
+
     public static boolean contains(List<String> names) {
         return !filter(item -> names.contains(item.getName().toLowerCase())).isEmpty();
     }

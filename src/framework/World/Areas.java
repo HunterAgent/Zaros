@@ -20,9 +20,9 @@ public class Areas {
     public static final WorldArea LLETYA_BANK = makeArea(2348, 3168, 2357, 3159);
     public static final WorldArea LLETYA_GOREU = makeArea(2331, 3164, 2344, 3154);
     public static final WorldArea MINING_GUILD_BANK = makeArea(3010, 9714, 3018, 9723);
-    public static final WorldArea WINTERTOD = makeArea(1600, 4035, 1663, 3930);
-    public static final WorldArea WINTERTOD_GAME = makeArea(1604, 4029, 1654, 3966);
-    public static final WorldArea WINTERTOD_LOBBY = makeArea(1616, 3952, 1646, 3931);
+    public static final WorldArea WINTERTODT = makeArea(1600, 4035, 1663, 3930);
+    public static final WorldArea WINTERTODT_GAME = makeArea(1604, 4029, 1654, 3966);
+    public static final WorldArea WINTERTODT_LOBBY = makeArea(1616, 3952, 1646, 3931);
 
     public static WorldArea makeArea(int x, int y, int x2, int y2) {
         return new WorldArea(new WorldPoint(x, y, 0), new WorldPoint(x2, y2, 0));

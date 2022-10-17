@@ -4,7 +4,8 @@ import lombok.Getter;
 
 public enum BankType {
     BOOTH("Bank booth", "Bank"),
-    DEPOSIT("Bank Deposit Box", "Deposit");
+    DEPOSIT("Bank Deposit Box", "Deposit"),
+    CHEST("Bank chest", "Use");
 
     @Getter
     private final String name, action;

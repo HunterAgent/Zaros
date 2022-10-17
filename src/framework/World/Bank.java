@@ -15,7 +15,8 @@ import static framework.World.BankType.*;
 public enum Bank {
     DRAYNOR(BOOTH, Location.DRAYNOR, Areas.makeArea(3097, 3239, 3079, 3252)),
     LLETYA(DEPOSIT, Location.LLETYA, Areas.LLETYA_BANK),
-    MINING_GUILD(DEPOSIT, null, Areas.MINING_GUILD_BANK);
+    MINING_GUILD(DEPOSIT, null, Areas.MINING_GUILD_BANK),
+    WINTERTOD(CHEST, Location.WINTERTODT, Areas.WINTERTODT_LOBBY);
 
     @Getter
     private final BankType type;
@@ -42,10 +43,10 @@ public enum Bank {
         }
 
         if (!this.area.containsPoint(Player.getLocation())) {
-            if (bank != null) {
+            if (bank != null && Travel.reachable(bank)) {
                 Logger.log("Walking to bank");
                 Travel.travel(bank);
-            } else if (Travel.reachable(area)) {
+            } else if (Travel.reachable(area) && Travel.distance(area) < 20) {
                 Logger.log("Walking to bank area");
                 Travel.travel(area);
             } else {
@@ -64,6 +65,16 @@ public enum Bank {
     public static boolean depositAll() {
         ClientContext.instance().bank.depositInventory();
         return Inventory.isEmpty();
+    }
+
+    public static boolean depositAllExcept(String ... names) {
+        ClientContext.instance().bank.depositAllExcept(names);
+        return Inventory.onlyContains(names);
+    }
+
+    public static boolean withdraw(String name, int amount) {
+       ClientContext.instance().bank.withdraw(name, amount);
+       return Inventory.count(name) >= amount;
     }
 
     public static boolean close() {
