@@ -26,6 +26,6 @@ public class CoinPouchTask extends Task {
     @Override
     public boolean condition() {
         pouch = Inventory.getItem("Coin Pouch");
-        return pouch != null && (pouch.getQuantity() == 28 || Inventory.isFull());
+        return pouch != null && pouch.getQuantity() == 28;
     }
 }

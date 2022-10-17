@@ -21,4 +21,16 @@ public class Travel {
     public static boolean reachable(WorldPoint tile) {
         return ClientContext.instance().pathing.reachable(tile);
     }
+
+    public static boolean reachable(WorldArea destination) {
+        int count = 0;
+        WorldPoint tile = destination.randomTile();
+
+        while (!reachable(tile) && count < 5) {
+            tile = destination.randomTile();
+            count++;
+        }
+
+        return count != 5;
+    }
 }
