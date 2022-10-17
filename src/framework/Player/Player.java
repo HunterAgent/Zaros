@@ -50,4 +50,8 @@ public class Player {
         return Inventory.contains("pickaxe") || Equipment.contains("pickaxe");
     }
 
+    public static boolean hasAxe() {
+        return Inventory.contains("axe") || Equipment.contains("axe");
+    }
+
 }
