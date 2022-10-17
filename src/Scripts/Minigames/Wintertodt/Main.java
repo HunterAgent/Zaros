@@ -1,12 +1,17 @@
-package Scripts.Minigames.Wintertod;
+package Scripts.Minigames.Wintertodt;
 
-import Scripts.Minigames.Wintertod.Tasks.RestockTask;
+import Scripts.Minigames.Wintertodt.Tasks.BankTask;
+import Scripts.Minigames.Wintertodt.Tasks.EnterWintertodtTask;
+import Scripts.Minigames.Wintertodt.Tasks.RestockTask;
 import framework.Camera;
 import framework.Player.Skill;
 import framework.Tasks.AntiBanTask;
 import framework.Tasks.RunTask;
+import framework.Tasks.TeleportTask;
+import framework.Teleportation.Location;
 import framework.Utils.Logger;
 import framework.Utils.Utils;
+import framework.World.Areas;
 import simple.hooks.scripts.Category;
 import simple.hooks.scripts.ScriptManifest;
 import simple.hooks.scripts.listeners.InventoryChangeEvent;
@@ -27,9 +32,9 @@ import static simple.robot.utils.ScriptUtils.formatTime;
 @ScriptManifest(
         author = "HunterAgent",
         category = Category.MINIGAMES,
-        description = "Plays Wintertod with ease and luck",
+        description = "Plays Wintertodt with ease and luck",
         discord = "HunterAgent#8066",
-        name = "Lucky Wintertod",
+        name = "Lucky Wintertodt",
         servers = {"Zaros"},
         version = "0.1")
 public class Main extends TaskScript implements InventoryChangeListener {
@@ -63,6 +68,10 @@ public class Main extends TaskScript implements InventoryChangeListener {
         Camera.setupDefaultCameraZoom();
 
         tasks.addAll(Arrays.asList(
+//                new TestingTask(ctx),
+                new TeleportTask(ctx, Location.WINTERTODT, Areas.WINTERTODT),
+                new BankTask(ctx),
+                new EnterWintertodtTask(ctx),
                 new AntiBanTask(ctx, 5),
                 new RunTask(ctx, 30),
                 new RestockTask(ctx)
