@@ -1,4 +1,4 @@
-package Scripts.Minigames.Wintertod.Tasks;
+package Scripts.Minigames.Wintertodt.Tasks;
 
 import framework.Camera;
 import framework.Player.Inventory;
@@ -74,7 +74,7 @@ public class RestockTask extends Task {
 
     @Override
     public boolean condition() {
-        return Areas.WINTERTOD_GAME.containsPoint(Player.getLocation()) &&
+        return Areas.WINTERTODT_GAME.containsPoint(Player.getLocation()) &&
                 !hasSupplies() &&
                 !Inventory.isFull() &&
                 !Player.isAnimating();
