@@ -2,6 +2,7 @@ package framework.Tasks;
 
 import framework.Player.Player;
 import framework.Teleportation.Teleportation;
+import framework.Utils.Logger;
 import framework.World.Areas;
 import simple.hooks.scripts.task.Task;
 import simple.hooks.simplebot.AntiBan;
@@ -20,6 +21,7 @@ public class AntiBanTask extends Task {
 
     @Override
     public void run() {
+        Logger.log("Antiban activated");
         Teleportation.home();
         ClientContext.instance().sleep(1000 * 60 * pause_length_minutes);
     }
