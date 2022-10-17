@@ -1,7 +1,5 @@
 package Scripts.Thieving.MasterFarmer;
 
-import Scripts.Thieving.Tasks.BankTask;
-import Scripts.Thieving.Tasks.CoinPouchTask;
 import Scripts.Thieving.Tasks.EquipRogueTask;
 import Scripts.Thieving.Tasks.PickpocketTask;
 import framework.Camera;
@@ -12,6 +10,7 @@ import framework.Utils.Logger;
 import framework.Utils.Utils;
 import framework.World.Areas;
 import framework.World.Bank;
+import framework.World.BankTask;
 import simple.hooks.scripts.Category;
 import simple.hooks.scripts.ScriptManifest;
 import simple.hooks.scripts.task.Task;
