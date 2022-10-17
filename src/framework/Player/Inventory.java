@@ -62,8 +62,16 @@ public class Inventory {
         return filter(itemName);
     }
 
+    public static SimpleItemQuery<SimpleItem> getItems(int ... itemId) {
+        return filter(itemId);
+    }
+
     public static SimpleItem getItem(String... itemName) {
         return getItems(itemName).next();
+    }
+
+    public static SimpleItem getItem(int ... id) {
+        return getItems(id).next();
     }
 
     public static boolean isFull() {
@@ -77,6 +85,12 @@ public class Inventory {
     public static boolean leftClickUseItemOnItem(String name1, String name2) {
         SimpleItem item1 = getItem(name1);
         SimpleItem item2 = getItem(name2);
+        return item1 != null && item2 != null && item1.click(0) && item2.click(0);
+    }
+
+    public static boolean leftClickUseItemOnItem(int id1, int id2) {
+        SimpleItem item1 = getItem(id1);
+        SimpleItem item2 = getItem(id2);
         return item1 != null && item2 != null && item1.click(0) && item2.click(0);
     }
 

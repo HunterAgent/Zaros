@@ -37,7 +37,7 @@ public class ChopTask extends Task {
 
     @Override
     public boolean condition() {
-        roots = WorldObject.getNearestWithinArea("Bruma roots", Areas.WINTERTODT_CORNER);
+        roots = WorldObject.getNearest("Bruma roots");
         return roots != null &&
                 Player.hasAxe() &&
                 !Inventory.isFull() &&

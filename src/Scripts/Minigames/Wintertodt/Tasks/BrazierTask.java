@@ -1,10 +1,8 @@
 package Scripts.Minigames.Wintertodt.Tasks;
 
 import Scripts.Minigames.Wintertodt.Brazier;
-import framework.Player.Inventory;
 import framework.Player.Player;
 import framework.World.Areas;
-import framework.World.Travel;
 import simple.hooks.scripts.task.Task;
 import simple.robot.api.ClientContext;
 
@@ -15,11 +13,7 @@ public class BrazierTask extends Task {
 
     @Override
     public void run() {
-        if (!Areas.WINTERTODT_CORNER.containsPoint(Player.getLocation())) {
-            Travel.travel(Areas.WINTERTODT_CORNER);
-        }
-
-        Brazier.handleNearestWithinArea(Areas.WINTERTODT_CORNER);
+        Brazier.handleNearest();
         ClientContext.instance().sleepCondition(Player::isAnimating, 500);
     }
 
@@ -32,6 +26,6 @@ public class BrazierTask extends Task {
     public boolean condition() {
         return Areas.WINTERTODT_GAME.containsPoint(Player.getLocation()) &&
                 !Player.isAnimating() &&
-                Brazier.canHandleNearest(Areas.WINTERTODT_CORNER);
+                Brazier.canHandleNearest();
     }
 }

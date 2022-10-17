@@ -18,13 +18,15 @@ public class RestockTask extends Task {
     private final int KNIFE_CRATE = 29317;
     private final int AXE_CRATE = 29318;
     private final int TINDER_CRATE = 29319;
+    private final int REJ_CRATE = 29320;
 
     private boolean hasSupplies()
     {
         return Player.hasAxe()&&
                 Inventory.contains("Hammer") &&
                 Inventory.contains("Tinderbox") &&
-                Inventory.contains("Knife");
+                Inventory.contains("Knife") &&
+                Inventory.count("Rejuvenation") >= 2;
     }
 
     private boolean collectCrate(int id) {
@@ -59,12 +61,14 @@ public class RestockTask extends Task {
         else if (!Inventory.contains("Knife"))
             collectCrate(KNIFE_CRATE);
 
+        else if (Inventory.count("Rejuvenation") < 2)
+            collectCrate(REJ_CRATE);
+
         else if (!Inventory.contains("Tinderbox"))
             collectCrate(TINDER_CRATE);
 
         else if (!Player.hasAxe())
             collectCrate(AXE_CRATE);
-
     }
 
     @Override

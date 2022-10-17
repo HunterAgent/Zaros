@@ -28,6 +28,10 @@ public class WorldObject {
         return ClientContext.instance().objects.populate().filter(id).nearest().next();
     }
 
+    public static SimpleObject getNearest(List<Integer> id) {
+        return ClientContext.instance().objects.populate().filter(obj -> id.contains(obj.getId())).nearest().next();
+    }
+
     public static SimpleObject getNearest(int id, WorldPoint point) {
         return ClientContext.instance().objects.populate().filter(id).nearest(point).next();
     }

@@ -76,8 +76,10 @@ public class Main extends TaskScript implements InventoryChangeListener {
                 new RunTask(ctx, 30),
                 new HealTask(ctx),
                 new RestockTask(ctx),
-                new FletchTask(ctx),
+                new RejPotTask(ctx),
                 new BrazierTask(ctx),
+                new FletchTask(ctx),
+                // TODO: FeedTask
                 new ChopTask(ctx)
         ));
 
