@@ -37,6 +37,7 @@ public class EnterWintertodtTask extends Task {
     @Override
     public boolean condition() {
         return !Areas.WINTERTODT_GAME.containsPoint(Player.getLocation()) &&
-                Areas.WINTERTODT.containsPoint(Player.getLocation());
+                Areas.WINTERTODT.containsPoint(Player.getLocation()) &&
+                !Player.isAnimating();
     }
 }
