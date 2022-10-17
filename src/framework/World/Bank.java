@@ -48,6 +48,7 @@ public enum Bank {
                 Logger.log("Walking to bank area");
                 Travel.travel(area);
             } else {
+                Logger.log("Teleporting to bank");
                 Teleportation.teleport(this.teleport);
             }
         }
