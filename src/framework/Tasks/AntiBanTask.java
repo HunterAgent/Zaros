@@ -9,6 +9,8 @@ import simple.hooks.simplebot.AntiBan;
 import simple.robot.api.ClientContext;
 
 public class AntiBanTask extends Task {
+    private final String[] staffList = {"ZelX", "Zonkey", "Qi", "Nicole", "meso", "Events", "Living", "Pele",
+            "Bullfrog", "Vanilla", "admin", "St Melchior", "Resting", "Nater"};
 
     private final AntiBan anti_ban;
     private final int pause_length_minutes;
@@ -33,6 +35,7 @@ public class AntiBanTask extends Task {
 
     @Override
     public boolean condition() {
-        return this.anti_ban.staffNearby() && !Areas.EDGEVILLE_AREA.containsPoint(Player.getLocation());
+        return (this.anti_ban.staffNearby() || ClientContext.instance().players.populate().filter(staffList).population() != 0)
+                && !Areas.EDGEVILLE_AREA.containsPoint(Player.getLocation());
     }
 }
