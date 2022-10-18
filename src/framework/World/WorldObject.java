@@ -9,7 +9,7 @@ import java.util.List;
 
 public class WorldObject {
     public static boolean isValid(SimpleObject obj) {
-        return obj != null && obj.visibleOnScreen() && obj.validateInteractable();
+        return obj != null && obj.validateInteractable();
     }
 
     public static SimpleObject getNearest(String name) {

@@ -29,7 +29,7 @@ public class Npc {
     }
 
     public static boolean isValid(SimpleNpc npc) {
-        return npc != null && npc.visibleOnScreen();
+        return npc != null && npc.validateInteractable();
     }
 
     public static SimpleNpc getNearestWithinArea(String name, WorldArea area) {
