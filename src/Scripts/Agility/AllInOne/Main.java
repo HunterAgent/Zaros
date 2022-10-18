@@ -6,6 +6,7 @@ import Scripts.Agility.Tasks.CourseTravelTask;
 import Scripts.Agility.Tasks.MarksLootTask;
 import framework.Camera;
 import framework.Player.Skill;
+import framework.Tasks.AntiBanTask;
 import framework.Tasks.RunTask;
 import framework.Utils.Utils;
 import simple.hooks.scripts.Category;
@@ -71,7 +72,7 @@ public class Main extends TaskScript implements InventoryChangeListener {
         Camera.setupDefaultCameraZoom();
         updateCourse(Course.getMaxCourse(Skill.getLvl(AGILITY)));
 
-        tasks.addAll(Arrays.asList(lootTask, new RunTask(ctx, 30), courseTask, travelTask));
+        tasks.addAll(Arrays.asList(new AntiBanTask(ctx, 5), lootTask, new RunTask(ctx, 30), courseTask, travelTask));
     }
 
     @Override
