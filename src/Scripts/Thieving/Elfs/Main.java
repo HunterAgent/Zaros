@@ -67,9 +67,9 @@ public class Main extends TaskScript {
         tasks.addAll(Arrays.asList(
                 new AntiBanTask(ctx, 5),
                 new RejuvenationBoxExactHealTask(ctx, 6),
+                new EquipRogueTask(ctx),
                 new CoinPouchTask(ctx),
                 new BankTask(ctx, Bank.LLETYA),
-                new EquipRogueTask(ctx),
                 new TeleportTask(ctx, Location.LLETYA, Areas.LLETYA),
                 new RunTask(ctx, 30),
                 new PickpocketTask(ctx, "Goreu", Areas.LLETYA_GOREU, false),

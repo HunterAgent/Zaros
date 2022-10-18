@@ -66,8 +66,8 @@ public class Main extends TaskScript {
         tasks.addAll(Arrays.asList(
                 new AntiBanTask(ctx, 5),
                 new RejuvenationBoxExactHealTask(ctx, 4),
-                new BankTask(ctx, Bank.DRAYNOR),
                 new EquipRogueTask(ctx),
+                new BankTask(ctx, Bank.DRAYNOR),
                 new TeleportTask(ctx, Location.DRAYNOR, Areas.DRAYNOR_VILLAGE),
                 new RunTask(ctx, 30),
                 new PickpocketTask(ctx, "Master Farmer", Areas.DRAYNOR_MARKET, true),
