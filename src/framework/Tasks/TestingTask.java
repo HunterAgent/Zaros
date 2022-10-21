@@ -1,9 +1,12 @@
 package framework.Tasks;
 
+import framework.Player.Player;
 import framework.Teleportation.Location;
 import framework.Teleportation.Teleportation;
+import framework.Utils.Logger;
 import simple.hooks.scripts.task.Task;
 import simple.hooks.simplebot.teleporter.Teleporter;
+import simple.hooks.wrappers.SimpleObject;
 import simple.robot.api.ClientContext;
 
 public class TestingTask extends Task {
@@ -13,15 +16,12 @@ public class TestingTask extends Task {
 
     @Override
     public void run() {
-        if (!Teleportation.teleport(Location.WOODCUTTING_GUILD))
-        {
-            ctx.log("Failed on code");
-            Teleporter tel = new Teleporter(ctx);
-            if (!tel.teleportStringPath("Skilling", "Wilderness: Agility Course"))
-            {
-                ctx.log("Failed regualar");
-            }
+        Logger.log("Logging objects:");
+        for (SimpleObject x : ctx.objects.populate().filter(o -> o.distanceTo(ctx.players.getLocal()) < 3)) {
+            if (x != null)
+                Logger.log(x.getName() + ": " + Integer.toString(x.getId()));
         }
+        Logger.log("\n");
     }
 
     @Override

@@ -14,6 +14,8 @@ import framework.World.Areas;
 import framework.World.Bank;
 import simple.hooks.scripts.Category;
 import simple.hooks.scripts.ScriptManifest;
+import simple.hooks.scripts.listeners.InventoryChangeEvent;
+import simple.hooks.scripts.listeners.InventoryChangeListener;
 import simple.hooks.scripts.task.Task;
 import simple.hooks.scripts.task.TaskScript;
 import simple.hooks.simplebot.ChatMessage;
@@ -22,6 +24,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import static simple.hooks.filters.SimpleSkills.Skills.THIEVING;
 import static simple.robot.utils.ScriptUtils.formatTime;
@@ -35,10 +38,10 @@ import static simple.robot.utils.ScriptUtils.formatTime;
         name = "Lucky Elf Pickpocket",
         servers = {"Zaros"},
         version = "1.1")
-public class Main extends TaskScript {
+public class Main extends TaskScript implements InventoryChangeListener {
 
     private long startTime;
-    private int startXp, startLvl;
+    private int startXp, startLvl, enhancedSeeds;
     private final List<Task> tasks = new ArrayList<>();
 
     public void validateSkillLevel()
@@ -65,7 +68,7 @@ public class Main extends TaskScript {
         Camera.setupDefaultCameraZoom();
 
         tasks.addAll(Arrays.asList(
-                new AntiBanTask(ctx, 5),
+                new AntiBanTask(ctx, (int)((Math.random() * 10) + 10)),
                 new RejuvenationBoxExactHealTask(ctx, 6),
                 new EquipRogueTask(ctx),
                 new CoinPouchTask(ctx),
@@ -98,17 +101,28 @@ public class Main extends TaskScript {
     public void paint(Graphics g) {
         int gainedXp = Skill.getGainedXP(THIEVING, startXp);
         g.setColor(new Color(30, 50, 70, 200));
-        g.fillRoundRect(545, 380, 192, 85, 15, 15);
+        g.fillRoundRect(545, 360, 192, 105, 15, 15);
         g.setColor(Color.WHITE);
-        g.drawString("Status: " + getScriptStatus(), 550, 400);
+        g.drawString("Status: " + getScriptStatus(), 550, 380);
         g.drawString("Level: " +
                         Utils.formatNumber(Skill.getLvl(THIEVING)) + " (" +
                         Utils.formatNumber(Skill.getLvl(THIEVING) - startLvl) + ")",
-                550, 420);
+                550, 400);
         g.drawString("XP: " +
                         Utils.formatNumber(gainedXp) + " (" +
                         Utils.formatNumber(this.ctx.paint.valuePerHour(gainedXp, startTime)) + ")",
+                550, 420);
+        g.drawString("Enhanced Seeds: " +
+                        Utils.formatNumber(enhancedSeeds) + " (" +
+                        Utils.formatNumber(this.ctx.paint.valuePerHour(enhancedSeeds, startTime)) + ")",
                 550, 440);
         g.drawString("Uptime: " + formatTime(startTime, System.currentTimeMillis()), 550, 460);
+    }
+
+    @Override
+    public void onChange(InventoryChangeEvent inventoryChangeEvent) {
+        if (inventoryChangeEvent.getItemId() == 23959) {
+            enhancedSeeds++;
+        }
     }
 }

@@ -73,9 +73,9 @@ public class Camera {
         ctx.viewport.pitch(true);
     }
 
-    public static void turnTo(SimpleLocatable obj)
+    public static boolean turnTo(SimpleLocatable obj)
     {
-        ClientContext.instance().viewport.turnTo(obj);
+        return ClientContext.instance().viewport.turnTo(obj);
     }
 
 }

@@ -17,8 +17,8 @@ public class Brazier {
     public enum State {
 
         BROKEN(29313, "Hammer", "Fix"),
-        UNLIT(29312, "Tinderbox", "Light");
-//        LIT(29314, "Bruma kindling", "Feed");
+        UNLIT(29312, "Tinderbox", "Light"),
+        LIT(29314, "Bruma kindling", "Feed");
 
         @Getter
         private final int id;
@@ -41,19 +41,18 @@ public class Brazier {
         }
     }
 
-    public static SimpleObject getNearest() {
-        SimpleObject braz = WorldObject.getNearest(Arrays.stream(State.values()).map(State::getId).collect(Collectors.toList()));
-        if (braz == null)
-            braz = WorldObject.getNearest("Brazier");
-        return braz;
+    public static SimpleObject getNearestWithinArea(WorldArea area) {
+        return WorldObject.getNearestWithinArea(
+                Arrays.stream(State.values()).map(State::getId).collect(Collectors.toList()),
+                area);
     }
 
     public static boolean canHandle(State s) {
         return s != null && Inventory.contains(s.reqItemName);
     }
 
-    public static boolean canHandleNearest() {
-        SimpleObject brazier = getNearest();
+    public static boolean canHandleNearest(WorldArea area) {
+        SimpleObject brazier = getNearestWithinArea(area);
         if (brazier == null)
             return false;
 
@@ -80,7 +79,7 @@ public class Brazier {
         }
     }
 
-    public static void handleNearest() {
-        handle(getNearest());
+    public static void handleNearestWithinArea(WorldArea area) {
+        handle(getNearestWithinArea(area));
     }
 }

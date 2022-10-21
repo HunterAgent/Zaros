@@ -4,13 +4,14 @@ import framework.Player.Player;
 import framework.Teleportation.Teleportation;
 import framework.Utils.Logger;
 import framework.World.Areas;
+import framework.World.Bank;
 import simple.hooks.scripts.task.Task;
 import simple.hooks.simplebot.AntiBan;
 import simple.robot.api.ClientContext;
 
 public class AntiBanTask extends Task {
     private final String[] staffList = {"ZelX", "Zonkey", "Qi", "Nicole", "meso", "Events", "Living", "Pele",
-            "Bullfrog", "Vanilla", "admin", "St Melchior", "Resting", "Nater"};
+            "Bullfrog", "Vanilla", "admin", "St Melchior", "Resting", "Nater", "E G G", "Tremendous"};
 
     private final AntiBan anti_ban;
     private final int pause_length_minutes;
@@ -19,12 +20,19 @@ public class AntiBanTask extends Task {
         super(ctx);
         this.anti_ban = new AntiBan(ctx);
         this.pause_length_minutes = pause_length_minutes;
+        Logger.log("Setting antiban pause time to: " + this.pause_length_minutes);
     }
 
     @Override
     public void run() {
         Logger.log("Antiban activated");
-        Teleportation.home();
+        for (int i = 0; i < 5; i++) {
+            if (!Bank.isOpen()) {
+                Teleportation.home();
+                ClientContext.instance().sleepCondition(Player::isAnimating, 500);
+                Bank.EDGE.open();
+            }
+        }
         ClientContext.instance().sleep(1000 * 60 * pause_length_minutes);
     }
 

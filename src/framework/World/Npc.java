@@ -1,5 +1,7 @@
 package framework.World;
 
+import framework.Camera;
+import framework.Utils.Logger;
 import simple.hooks.wrappers.SimpleNpc;
 import simple.hooks.wrappers.SimpleObject;
 import simple.robot.api.ClientContext;
@@ -28,8 +30,20 @@ public class Npc {
         return ClientContext.instance().npcs.populate().filter(id).filter(npc -> npc != null && !npc.isDead()).filter(npcFilter).nearest().next();
     }
 
-    public static boolean isValid(SimpleNpc npc) {
-        return npc != null && npc.validateInteractable();
+    public static boolean validate(SimpleNpc npc) {
+        if (npc == null) return false;
+
+        Logger.log("NPC is not null");
+        if (!npc.visibleOnScreen())
+        {
+            Logger.log("NPC is not visible");
+            Camera.turnTo(npc);
+            Logger.log("Turning camera");
+            Travel.travel(npc);
+            Logger.log("Traveling");
+        }
+
+        return npc.visibleOnScreen();
     }
 
     public static SimpleNpc getNearestWithinArea(String name, WorldArea area) {

@@ -16,7 +16,8 @@ public enum Bank {
     DRAYNOR(BOOTH, Location.DRAYNOR, Areas.makeArea(3097, 3239, 3079, 3252)),
     LLETYA(DEPOSIT, Location.LLETYA, Areas.LLETYA_BANK),
     MINING_GUILD(DEPOSIT, null, Areas.MINING_GUILD_BANK),
-    WINTERTOD(CHEST, Location.WINTERTODT, Areas.WINTERTODT_LOBBY);
+    WINTERTOD(CHEST, Location.WINTERTODT, Areas.WINTERTODT_LOBBY),
+    EDGE(BOOTH, Location.EDGEVILLE, Areas.EDGEVILLE_AREA);
 
     @Getter
     private final BankType type;

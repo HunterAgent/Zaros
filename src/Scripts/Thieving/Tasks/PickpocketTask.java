@@ -1,7 +1,7 @@
 package Scripts.Thieving.Tasks;
 
 import framework.Player.Inventory;
-import framework.Player.Player;
+import framework.Utils.Logger;
 import framework.World.Npc;
 import framework.World.Travel;
 import simple.hooks.scripts.task.Task;
@@ -25,13 +25,16 @@ public class PickpocketTask extends Task {
 
     @Override
     public void run() {
-        if (Npc.isValid(target)) {
+        Logger.log("Pickpocketing");
+        if (Npc.validate(target)) {
             if (leftClick) {
+                Logger.log("Interacting 1");
                 if (!target.click(0)) {
                     target.click("Pickpocket");
                 }
             }
             else {
+                Logger.log("Interacting 2");
                 target.click("Pickpocket");
             }
         } else {

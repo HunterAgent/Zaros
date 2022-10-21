@@ -3,10 +3,7 @@ package Scripts.Minigames.Wintertodt;
 import Scripts.Minigames.Wintertodt.Tasks.*;
 import framework.Camera;
 import framework.Player.Skill;
-import framework.Tasks.AntiBanTask;
-import framework.Tasks.FailSafeCloseBankTask;
-import framework.Tasks.RunTask;
-import framework.Tasks.TeleportTask;
+import framework.Tasks.*;
 import framework.Teleportation.Location;
 import framework.Utils.Logger;
 import framework.Utils.Utils;
@@ -67,7 +64,7 @@ public class Main extends TaskScript implements InventoryChangeListener {
         Camera.setupDefaultCameraZoom();
 
         tasks.addAll(Arrays.asList(
-//                new TestingTask(ctx),
+                new TestingTask(ctx),
                 new TeleportTask(ctx, Location.WINTERTODT, Areas.WINTERTODT),
                 new BankTask(ctx),
                 new FailSafeCloseBankTask(ctx),

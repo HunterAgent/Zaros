@@ -1,5 +1,6 @@
 package framework.World;
 
+import framework.Utils.Logger;
 import net.runelite.api.coords.WorldPoint;
 import simple.hooks.wrappers.SimpleObject;
 import simple.robot.api.ClientContext;
